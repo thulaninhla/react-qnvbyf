@@ -8,7 +8,6 @@ import React,{useState} from 'react';
 import{BrowserRouter  as Router, Route, Switch, Link} from "react-router-dom";
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import "./style.css";
 import Typography from '@material-ui/core/Typography';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import Link from '@material-ui/core/Link';
