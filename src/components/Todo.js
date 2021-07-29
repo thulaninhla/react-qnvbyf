@@ -44,6 +44,14 @@ export default function Todo() {
 
 <div>
 
+          {error && <Alert variant="danger">{error}</Alert>}
+        <h6 className="text-center mb-10"  ><strong>Signed in as:</strong> {currentUser.email}</h6>
+          
+<h6 className="text-center mb-4">
+<Button variant="link" onClick={handleLogout}>
+          Sign Out
+        </Button>
+</h6>
 
 <Grid className="mainGrid "  container spacing={0}>
 <Grid className="firstinGrid " item xs={2}>
