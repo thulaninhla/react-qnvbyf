@@ -62,6 +62,8 @@ export default function Todo() {
     }
   }
 
+  function Todo
+
   return (
 
 
@@ -110,7 +112,16 @@ export default function Todo() {
             <div className="container">
 
             <h1 className="text-center mb-4">Todo List</h1>
-
+            <FormTodo addTodo={addTodo} />
+            <div>
+              {todos.map((todo, index) => (
+                <Card>
+                  <Card.Body>
+                    <Todo key={index} index={index} todo={todo} markTodo={markTodo} />
+                    </Card.Body>
+                 </Card>   
+              ))}
+            </div>
 
         </div>
       </div>
