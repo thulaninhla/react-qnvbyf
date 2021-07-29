@@ -3,7 +3,8 @@ import { Card, Button, Alert } from 'react-bootstrap';
 import { useAuth } from './AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 import React from "react";
-import { BrowserRouter as Router,Switch,Route,Link,useHistory,useLocation,useParams} from "react-router-dom";
+import { BrowserRouter as Link, useHistory, Button, Card, Form} from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 import React,{useState} from 'react';
 import{BrowserRouter  as Router, Route, Switch, Link} from "react-router-dom";
 import Paper from '@material-ui/core/Paper';
@@ -26,6 +27,29 @@ export default function Todo() {
   const [error, setError] = useState('');
   const { currentUser, logout } = useAuth();
   const history = useHistory();
+  const [todos, setTodos] = React.useState([
+    {
+      text: "This is a sample todo",
+      isDone: false
+    }
+  ]);
+
+  const addTodo = text => {
+    const newTodos = [...todos, { text }];
+    setTodos(newTodos);
+  };
+
+  const markTodo = index => {
+    const newTodos = [...todos];
+    newTodos[index].isDone = true;
+    setTodos(newTodos);
+  };
+
+  const removeTodo = index => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);  
+  };
 
   async function handleLogout() {
     setError('');
@@ -82,8 +106,16 @@ export default function Todo() {
         <Typography style={{fontWeight:"bold", fontSize:'30px', color: '#FFFFFF', marginLeft:"0px"}}>TO-D0-LIST  <i style={{  color: '#e65100', marginLeft:"270px"}}  class="fa fa-sun-o" aria-hidden="true"></i>
         </Typography>
 
+          <div className="todo">
+            <div className="container">
+
+            <h1 className="text-center mb-4">Todo List</h1>
 
 
+        </div>
+      </div>
+
+    
 
 
         </Paper>
