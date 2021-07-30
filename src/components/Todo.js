@@ -7,7 +7,10 @@ import { useAuth } from './AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 import "./style.css";
 
+
+
 function Todo({ todo, index, markTodo, removeTodo }) {
+
   return (
     <div
       className="todo"
@@ -20,6 +23,14 @@ function Todo({ todo, index, markTodo, removeTodo }) {
       </div>
     </div>
   );
+}
+
+function getCurrentDate(seperator=''){
+
+  let newDate = new Date()
+  let date = newDate.getDate();
+  let month = newDate.getMonth() + 1;
+  let year = newDate.getFullYear();
 }
 
 function FormTodo({ addTodo }) {
@@ -91,7 +102,7 @@ function App() {
 
           {error && <Alert variant="danger">{error}</Alert>}
        <h2 className="text-center mb-4">   <strong>Signed in as:</strong> {currentUser.email} </h2>
-
+      <h5> Date & Time: {new Date().toLocaleString() + " "}</h5>
       <Button variant="link" onClick={handleLogout}>
           Sign Out
         </Button>
