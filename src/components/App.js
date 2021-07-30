@@ -3,7 +3,7 @@ import Signup from "./Signup"
 import { Container } from 'react-bootstrap'
 import { AuthProvider } from "./AuthContext"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
-import TodoList from "./TodoList"
+import Todo from "./Todo"
 import Signin from "./Signin"
 import PrivateRoute from "./PrivateRoute"
 import ForgotPassword from "./ForgotPassword"
@@ -22,7 +22,7 @@ function App() {
           <AuthProvider>
             <Switch>
               <Route path="/signin" component={Signin} />
-              <PrivateRoute exact path="/" component={TodoList} />
+              <PrivateRoute exact path="/" component={Todo} />
               <Route path="/signup" component={Signup} />
               <Route path="/forgot-passsword" component={ForgotPassword} />
                 </Switch>

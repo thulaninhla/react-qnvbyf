@@ -3,6 +3,7 @@ import { Form, Button, Card, Container, Row, Col, Alert } from "react-bootstrap"
 import "firebase/auth"
 import { useAuth } from "./AuthContext"
 import { Link, useHistory } from "react-router-dom"
+import "./style.css";
 
 
 export default function Signin() { 
@@ -30,25 +31,25 @@ async function handleSubmit(e) {
 
   return (
     <>
-    <grid>
+    
+    <grid className="w-100">
     <Container>
       <Row>
-    <Col xs={6} md={7}>
+    <Col xs={2} md={4} className="W-100">
     <Card className="bg-dark text-white" style={{ width: "35rem", height: "35rem"}}>
   <Card.Img src="https://scontent.fjnb11-1.fna.fbcdn.net/v/t1.6435-9/c420.0.1080.1080a/s851x315/221416672_4359414714115016_4589805908274039668_n.jpg?_nc_cat=105&ccb=1-3&_nc_sid=da31f3&_nc_eui2=AeG_K15tqUvmV-6HEmkzTHM2QLOPcot1b9xAs49yi3Vv3Cy1D_AWTw0i9-5kE8jUzkV1kHA4yoULySMtqKoaflft&_nc_ohc=BauuODv3LY8AX8FLHVL&_nc_ht=scontent.fjnb11-1.fna&oh=c03da21ce0cb1e7b6b9b31ad9c4e7f8e&oe=6121E755" alt="Card image" />
   <Card.ImgOverlay>
-    <Card.Title>Card title</Card.Title>
+    <Card.Title></Card.Title>
     <Card.Text>
-      This is a wider card with supporting text below as a natural lead-in to
-      additional content. This content is a little bit longer.
+      
     </Card.Text>
-    <Card.Text>Last updated 3 mins ago</Card.Text>
+    <Card.Text></Card.Text>
   </Card.ImgOverlay>
 </Card>
 
     </Col>
-
-        <Col xs={5} md={}>
+    
+        <Col xs={} md={7}>
       <Card style={{ width: '35rem', height: '35rem'}}>
         <Card.Body>
           
@@ -67,6 +68,7 @@ async function handleSubmit(e) {
               Sign in
             </Button>
           </Form>
+          
           <div className="w-100 text-center mt-2">
               <Link to="/forgot-passsword">Forgot Password</Link>
             </div>
@@ -79,8 +81,10 @@ async function handleSubmit(e) {
       </Col>
      
       </Row>
+      
      </Container>
      </grid>
     </>
+    
   );
 }
