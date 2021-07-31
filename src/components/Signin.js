@@ -6,6 +6,7 @@ import { Link, useHistory } from "react-router-dom"
 import "./style.css";
 
 
+
 export default function Signin() { 
   const emailRef  = useRef()
   const passwordRef = useRef()
@@ -31,9 +32,8 @@ async function handleSubmit(e) {
 
   return (
     <>
-    
+  
     <grid>
-    <Container>
       <Row>
     <Col xs={9} md={5}>
     <Card className="bg-dark text-white" style={{ width: "35rem", height: "35rem"}}>
@@ -82,7 +82,6 @@ async function handleSubmit(e) {
      
       </Row>
       
-     </Container>
      </grid>
     </>
     
