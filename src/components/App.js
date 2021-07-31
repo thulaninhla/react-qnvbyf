@@ -11,7 +11,7 @@ import Grid from '@material-ui/core/Grid';
 
 function App() {
   return (
-    <Grid>
+    
     <div>
       <Container
       className="d-flex align-items-center justify-content-center"
@@ -32,7 +32,7 @@ function App() {
     </div>
   </Container>
   </div>
-  </Grid>
+  
   )
 }
 
