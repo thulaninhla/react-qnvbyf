@@ -31,13 +31,14 @@ async function handleSubmit(e) {
   }
 
   return (
-    <>
   
-    <grid>
+  
+    <>
+    <Container>
       <Row>
-    <Col xs={9} md={5}>
+    <Col xs={5} md={5}>
     <Card className="bg-dark text-white" style={{ width: "35rem", height: "35rem"}}>
-  <Card.Img src="https://scontent.fjnb11-1.fna.fbcdn.net/v/t1.6435-9/c420.0.1080.1080a/s851x315/221416672_4359414714115016_4589805908274039668_n.jpg?_nc_cat=105&ccb=1-3&_nc_sid=da31f3&_nc_eui2=AeG_K15tqUvmV-6HEmkzTHM2QLOPcot1b9xAs49yi3Vv3Cy1D_AWTw0i9-5kE8jUzkV1kHA4yoULySMtqKoaflft&_nc_ohc=BauuODv3LY8AX8FLHVL&_nc_ht=scontent.fjnb11-1.fna&oh=c03da21ce0cb1e7b6b9b31ad9c4e7f8e&oe=6121E755" class="img-fluid" alt="Card image" />
+  <Card.Img src="https://scontent.fjnb11-1.fna.fbcdn.net/v/t1.6435-9/c420.0.1080.1080a/s851x315/221416672_4359414714115016_4589805908274039668_n.jpg?_nc_cat=105&ccb=1-3&_nc_sid=da31f3&_nc_eui2=AeG_K15tqUvmV-6HEmkzTHM2QLOPcot1b9xAs49yi3Vv3Cy1D_AWTw0i9-5kE8jUzkV1kHA4yoULySMtqKoaflft&_nc_ohc=BauuODv3LY8AX8FLHVL&_nc_ht=scontent.fjnb11-1.fna&oh=c03da21ce0cb1e7b6b9b31ad9c4e7f8e&oe=6121E755"  alt="Card image" />
   <Card.ImgOverlay>
     <Card.Title></Card.Title>
     <Card.Text>
@@ -63,7 +64,7 @@ async function handleSubmit(e) {
             <Form.Group id="password">
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" ref={passwordRef} required />
-            </Form.Group>
+            </Form.Group><br/>
             <Button disabled="" className="w-100" type="submit">
               Sign in
             </Button>
@@ -82,7 +83,7 @@ async function handleSubmit(e) {
      
       </Row>
       
-     </grid>
+    </Container> 
     </>
     
   );
