@@ -6,31 +6,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useAuth } from './AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 import "./style.css";
-
+import { Scrollbars } from 'react-custom-scrollbars'
 
 
 function Todo({ todo, index, markTodo, removeTodo }) {
 
   return (
-    <div
-      className="todo"
+    
+    
+    <div className="todo">
       
-    >
       <span style={{ textDecoration: todo.isDone ? "line-through" : "" }}>{todo.text}</span>
+      
       <div>
         <Button variant="outline-success" onClick={() => markTodo(index)}>✓</Button>{' '}
         <Button variant="outline-danger" onClick={() => removeTodo(index)}>✕</Button>
       </div>
     </div>
+  
   );
-}
-
-function getCurrentDate(seperator=''){
-
-  let newDate = new Date()
-  let date = newDate.getDate();
-  let month = newDate.getMonth() + 1;
-  let year = newDate.getFullYear();
 }
 
 function FormTodo({ addTodo }) {
@@ -58,10 +52,7 @@ function FormTodo({ addTodo }) {
 
 function App() {
   const [todos, setTodos] = React.useState([
-    {
-      text: "Submit project ",
-      isDone: false
-    }
+    
   ]);
 
   const addTodo = text => {
@@ -97,9 +88,10 @@ function App() {
   }
 
   return (
+    
     <div className="app">
       <div className="container">
-
+  
           {error && <Alert variant="danger">{error}</Alert>}
        <h2 className="text-center mb-4">   <strong>Signed in as:</strong> {currentUser.email} </h2>
       <h5> Date & Time: {new Date().toLocaleString() + " "}</h5>
@@ -109,6 +101,7 @@ function App() {
         <h3 className="text-center mb-4">Todo List</h3>
         <FormTodo addTodo={addTodo} />
         <div>
+          <>
           {todos.map((todo, index) => (
             <Card>
               <Card.Body>
@@ -121,10 +114,14 @@ function App() {
                 />
               </Card.Body>
             </Card>
-          ))}
+            
+          ))} </>
+         
+           
         </div>
       </div>
     </div>
+    
   );
 }
 

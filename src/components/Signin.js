@@ -34,7 +34,7 @@ async function handleSubmit(e) {
   
   
     <>
-    <Container>
+    <Container fluid>
       <Row>
     <Col xs={5} md={5}>
     <Card className="bg-dark text-white" style={{ width: "35rem", height: "35rem"}}>
