@@ -1,27 +1,30 @@
 
 import React, { useState } from "react";
 import "./App.css";
-import { Button, Card, Form } from 'react-bootstrap';
+import { Button, Card, Form, Container, Row, Col} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useAuth } from './AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 import "./style.css";
-import { Scrollbars } from 'react-custom-scrollbars'
+import { Scrollbars } from 'react-custom-scrollbars';
 
 
 function Todo({ todo, index, markTodo, removeTodo }) {
 
   return (
     
-    
+   
     <div className="todo">
       
       <span style={{ textDecoration: todo.isDone ? "line-through" : "" }}>{todo.text}</span>
       
       <div>
+        
         <Button variant="outline-success" onClick={() => markTodo(index)}>✓</Button>{' '}
         <Button variant="outline-danger" onClick={() => removeTodo(index)}>✕</Button>
+        
       </div>
+      
     </div>
   
   );
@@ -76,6 +79,7 @@ function App() {
   const { currentUser, logout } = useAuth();
   const history = useHistory();
 
+
   async function handleLogout() {
     setError('');
 
@@ -93,11 +97,12 @@ function App() {
       <div className="container">
   
           {error && <Alert variant="danger">{error}</Alert>}
-       <h2 className="text-center mb-4">   <strong>Signed in as:</strong> {currentUser.email} </h2>
-      <h5> Date & Time: {new Date().toLocaleString() + " "}</h5>
-      <Button variant="link" onClick={handleLogout}>
+          <Button variant="link" onClick={handleLogout}>
           Sign Out
         </Button>
+       <h3 className="text-center mb-4">   <strong>Signed in as:</strong> {currentUser.email} </h3>
+      <h5> Date & Time: {new Date().toLocaleString() + " "}</h5>
+      
         <h3 className="text-center mb-4">Todo List</h3>
         <FormTodo addTodo={addTodo} />
         <div>
