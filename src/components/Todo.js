@@ -7,6 +7,7 @@ import { useAuth } from './AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 import "./style.css";
 import { Scrollbars } from 'react-custom-scrollbars';
+import 'firebase/auth';
 
 
 function Todo({ todo, index, markTodo, removeTodo }) {
