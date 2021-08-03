@@ -1,14 +1,63 @@
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+import Avatar from '@material-ui/core/Avatar';
+import Typography from '@material-ui/core/Typography';
+import Alert from '@material-ui/lab/Alert';
+import Input from '@material-ui/core/Input';
 import React, { useRef, useState } from "react"
-import { Form, Button, Card, Container, Row, Col, Alert } from "react-bootstrap"
-import "firebase/auth"
 import { useAuth } from "./AuthContext"
 import { Link, useHistory } from "react-router-dom"
-import "./style.css";
-import CssBaseline from '@material-ui/core/CssBaseline';
 
 
+
+const style={
+  borderRadius:"10px 0px 0px 10px",
+
+}
+
+const styl={
+  borderRadius:"0px 10px 10px 0px",
+  }
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  image: {
+    backgroundImage: 'url(https://scontent-jnb1-1.xx.fbcdn.net/v/t1.6435-9/221416672_4359414714115016_4589805908274039668_n.jpg?_nc_cat=105&ccb=1-3&_nc_sid=730e14&_nc_eui2=AeG_K15tqUvmV-6HEmkzTHM2QLOPcot1b9xAs49yi3Vv3Cy1D_AWTw0i9-5kE8jUzkV1kHA4yoULySMtqKoaflft&_nc_ohc=e_crX677YlQAX9z1Gds&_nc_ht=scontent-jnb1-1.xx&oh=eba001f82eea9898064eced70e81e0c5&oe=612E7421)',
+    backgroundRepeat: 'no-repeat',
+    backgroundColor:
+      theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
+  paper: {
+    
+    padding: theme.spacing(6),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}))
 
 export default function Signin() { 
+  const classes = useStyles();
+
   const emailRef  = useRef()
   const passwordRef = useRef()
   const { signin } = useAuth()
@@ -33,60 +82,71 @@ async function handleSubmit(e) {
 
   return (
   
-  
-    <>
-    <CssBaseline />
-    <Container fluid>
-      <Row>
-    <Col xl={5} md={5}>
-    <Card className="bg-dark text-white" style={{ width: "35rem", height: "35rem"}}>
-  <Card.Img src="https://scontent.fjnb11-1.fna.fbcdn.net/v/t1.6435-9/c420.0.1080.1080a/s851x315/221416672_4359414714115016_4589805908274039668_n.jpg?_nc_cat=105&ccb=1-3&_nc_sid=da31f3&_nc_eui2=AeG_K15tqUvmV-6HEmkzTHM2QLOPcot1b9xAs49yi3Vv3Cy1D_AWTw0i9-5kE8jUzkV1kHA4yoULySMtqKoaflft&_nc_ohc=BauuODv3LY8AX8FLHVL&_nc_ht=scontent.fjnb11-1.fna&oh=c03da21ce0cb1e7b6b9b31ad9c4e7f8e&oe=6121E755"  alt="Card image" />
-  <Card.ImgOverlay>
-    <Card.Title></Card.Title>
-    <Card.Text>
-      
-    </Card.Text>
-    <Card.Text></Card.Text>
-  </Card.ImgOverlay>
-</Card>
+  <section>
 
-    </Col>
-    
-        <Col xs={5} md={7}>
-      <Card style={{ width: '35rem', height: '35rem'}}>
-        <Card.Body>
-          
-          <h2 className="text-center mb-4">Sign In</h2>
+
+<div className={classes.root}>
+      <Grid container component="main" className={classes.root}>
+        
+        <Grid style={style} className={classes.image} item xs={6}>
+         
+        </Grid>
+        <Grid item xs={}>
+          <Paper style={styl} className={classes.paper}> 
+          <h2 style={{marginBottom:'30px'}} className="">Sign In</h2>
           {error && <Alert variant="danger">{error}</Alert>}
-          <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
-            </Form.Group>
-            <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" ref={passwordRef} required />
-            </Form.Group><br/>
-            <Button disabled="" className="w-100" type="submit">
+        
+          <form onSubmit={handleSubmit}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              size="small"
+              type="email" ref={emailRef}
+            />
+             
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="passsword"
+              label="Passsword"
+              name="passsword"
+              autoComplete="passsword"
+              autoFocus
+              size="small"
+              type="passsword" ref={passwordRef}
+            />
+          
+              <Button disabled=""
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
               Sign in
             </Button>
-          </Form>
-          
-          <div className="w-100 text-center mt-2">
+          </form>
+          <div className="">
               <Link to="/forgot-passsword">Forgot Password</Link>
             </div>
-        </Card.Body>
-        <div className="w-100 text-center mt-2">
+       
+        <div className="">
       Need an account? <Link to="/signup">Sign Up</Link>
-      </div>
-      </Card>
-     
-      </Col>
-     
-      </Row>
+      </div></Paper>
+        </Grid>
       
-    </Container> 
-    </>
-    
+      </Grid>
+    </div>
+
+</section>
   );
 }
