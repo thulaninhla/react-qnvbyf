@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -9,11 +9,12 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import Alert from '@material-ui/lab/Alert';
 import Input from '@material-ui/core/Input';
-import React, { useRef, useState } from "react"
-import { useAuth } from "./AuthContext"
+import { useAuth } from "./AuthContext";
 import { Link, useHistory } from "react-router-dom"
-
-
+import  FormControl from '@material-ui/core/FormControl';
+import  FormGroup from '@material-ui/core/FormGroup';
+import InputLabel from '@material-ui/core/InputLabel';
+import 'firebase/auth';
 
 const style={
   borderRadius:"10px 0px 0px 10px",
@@ -56,14 +57,14 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function Signin() { 
+ 
+  const emailRef  = useRef();
+  const passwordRef = useRef();
+  const { signin } = useAuth();
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const history = useHistory();
   const classes = useStyles();
-
-  const emailRef  = useRef()
-  const passwordRef = useRef()
-  const { signin } = useAuth()
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
-  const history = useHistory()
 
 
 async function handleSubmit(e) {
@@ -81,8 +82,6 @@ async function handleSubmit(e) {
   }
 
   return (
-  
-  <section>
 
 
 <div className={classes.root}>
@@ -95,46 +94,23 @@ async function handleSubmit(e) {
           <Paper style={styl} className={classes.paper}> 
           <h2 style={{marginBottom:'30px'}} className="">Sign In</h2>
           {error && <Alert variant="danger">{error}</Alert>}
-        
           <form onSubmit={handleSubmit}>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              size="small"
-              type="email" ref={emailRef}
-            />
-             
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="passsword"
-              label="Passsword"
-              name="passsword"
-              autoComplete="passsword"
-              autoFocus
-              size="small"
-              type="passsword" ref={passwordRef}
-            />
-          
-              <Button disabled=""
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
+        <FormGroup id="email"> 
+        <TextField label="Email" variant="filled" type="email" required />
+        <FormControl type="email" ref={emailRef} required>
+          </FormControl>
+          </FormGroup>
+
+        <FormGroup id="passsword">  
+        <TextField label="Password" variant="filled" type="password" required />
+        <FormControl type="passsword" ref={passwordRef} required>
+          </FormControl>
+          </FormGroup>
+        
+            <Button disabled="" className="" type="submit">
               Sign in
             </Button>
-          </form>
+            </form>
           <div className="">
               <Link to="/forgot-passsword">Forgot Password</Link>
             </div>
@@ -147,6 +123,5 @@ async function handleSubmit(e) {
       </Grid>
     </div>
 
-</section>
   );
 }
