@@ -8,7 +8,8 @@ import { Link, useHistory } from 'react-router-dom';
 import "./style.css";
 import { Scrollbars } from 'react-custom-scrollbars';
 import 'firebase/auth';
-
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 
 function Todo({ todo, index, markTodo, removeTodo }) {
 

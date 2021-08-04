@@ -38,69 +38,44 @@ async function handleSubmit(e) {
   <div className="container">
     <div className="row" g-0>
       <div className="col-lg-5">
-        <img src="https://scontent.fjnb11-1.fna.fbcdn.net/v/t1.6435-9/c420.0.1080.1080a/s851x315/221416672_4359414714115016_4589805908274039668_n.jpg?_nc_cat=105&ccb=1-3&_nc_sid=da31f3&_nc_eui2=AeG_K15tqUvmV-6HEmkzTHM2QLOPcot1b9xAs49yi3Vv3Cy1D_AWTw0i9-5kE8jUzkV1kHA4yoULySMtqKoaflft&_nc_ohc=BauuODv3LY8AX8FLHVL&_nc_ht=scontent.fjnb11-1.fna&oh=c03da21ce0cb1e7b6b9b31ad9c4e7f8e&oe=6121E755" alt="" />
+        <img className="img-fluid" alt="" />
       </div>
-          <div className="col-lg-7 text=center py-5">
+          <div className="col-lg-7 text-center py-5">
             <h1>Sign in</h1>
-            </div>
-      </div>
-  </div>      
-</section>
-    <CssBaseline />
-    <Container fluid>
-      <Row>
-    <Col xl={5} md={5}>
-    <Card className="bg-dark text-white" style={{ width: "35rem", height: "35rem"}}>
-  <Card.Img src=""  alt="Card image" />
-  <Card.ImgOverlay>
-    <Card.Title></Card.Title>
-    <Card.Text>
-      
-    </Card.Text>
-    <Card.Text></Card.Text>
-  </Card.ImgOverlay>
-</Card>
+            {error && <Alert variant="danger">{error}</Alert>}
 
-    </Col>
-    
-        <Col xs={5} md={7}>
-      <Card style={{ width: '35rem', height: '35rem'}}>
-        <Card.Body>
+            <form onSubmit={handleSubmit}>
+              <div className="form-row py-3 pt-5" >
+                <div className="offset-1 col-lg-10">
+                  <input type="email" id="email" ref={emailRef} className="inp px-3" placeholder="Email" required/>
+              </div>
+                </div>
+                <div className="form-row">
+                <div className="offset-1 col-lg-10">
+                <input type="passsword" id="passsword" ref={passwordRef} className="inp px-3" placeholder="Passsword" required />
+              </div>
+                </div>
           
-          <h2 className="text-center mb-4">Sign In</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
+                <div className="form-row py-3">
+                <div className="offset-1 col-lg-10">
+                  <button className="btn1" type="submit">Sign in</button>
+              </div>
+                </div>
 
-              <Form.Label>Email</Form.Label>
-
-              <Form.Control type="email" ref={emailRef} required />
-
-            </Form.Group>
-            <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" ref={passwordRef} required />
-            </Form.Group><br/>
-            <Button disabled="" className="w-100" type="submit">
-              Sign in
-            </Button>
-          </Form>
-          
-          <div className="w-100 text-center mt-2">
+                <div className="w-100 text-center mt-2">
               <Link to="/forgot-passsword">Forgot Password</Link>
             </div>
-        </Card.Body>
+        
         <div className="w-100 text-center mt-2">
       Need an account? <Link to="/signup">Sign Up</Link>
+      </div>   
+            </form>    
+            </div>
       </div>
-      </Card>
-     
-      </Col>
-     
-      </Row>
-      
-    </Container> 
-    </>
+  </div>   
+  
+</section>
+</>
     
   );
 }
