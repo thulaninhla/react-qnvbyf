@@ -1,70 +1,20 @@
-import React, { useRef, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
-import Alert from '@material-ui/lab/Alert';
-import Input from '@material-ui/core/Input';
-import { useAuth } from "./AuthContext";
+import React, { useRef, useState } from "react"
+import { Form, Button, Card, Container, Row, Col, Alert } from "react-bootstrap"
+import "firebase/auth"
+import { useAuth } from "./AuthContext"
 import { Link, useHistory } from "react-router-dom"
-import  FormControl from '@material-ui/core/FormControl';
-import  FormGroup from '@material-ui/core/FormGroup';
-import InputLabel from '@material-ui/core/InputLabel';
-import 'firebase/auth';
+import "./mystyle.css"
+import CssBaseline from '@material-ui/core/CssBaseline';
 
-const style={
-  borderRadius:"10px 0px 0px 10px",
 
-}
-
-const styl={
-  borderRadius:"0px 10px 10px 0px",
-  }
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  image: {
-    backgroundImage: 'url(https://scontent-jnb1-1.xx.fbcdn.net/v/t1.6435-9/221416672_4359414714115016_4589805908274039668_n.jpg?_nc_cat=105&ccb=1-3&_nc_sid=730e14&_nc_eui2=AeG_K15tqUvmV-6HEmkzTHM2QLOPcot1b9xAs49yi3Vv3Cy1D_AWTw0i9-5kE8jUzkV1kHA4yoULySMtqKoaflft&_nc_ohc=e_crX677YlQAX9z1Gds&_nc_ht=scontent-jnb1-1.xx&oh=eba001f82eea9898064eced70e81e0c5&oe=612E7421)',
-    backgroundRepeat: 'no-repeat',
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  },
-  paper: {
-    
-    padding: theme.spacing(6),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}))
 
 export default function Signin() { 
- 
-  const emailRef  = useRef();
-  const passwordRef = useRef();
-  const { signin } = useAuth();
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-  const history = useHistory();
-  const classes = useStyles();
+  const emailRef  = useRef()
+  const passwordRef = useRef()
+  const { signin } = useAuth()
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+  const history = useHistory()
 
 
 async function handleSubmit(e) {
@@ -82,46 +32,75 @@ async function handleSubmit(e) {
   }
 
   return (
+  
+  <>
+<section className="login" py-5 bg-light>
+  <div className="container">
+    <div className="row" g-0>
+      <div className="col-lg-5">
+        <img src="https://scontent.fjnb11-1.fna.fbcdn.net/v/t1.6435-9/c420.0.1080.1080a/s851x315/221416672_4359414714115016_4589805908274039668_n.jpg?_nc_cat=105&ccb=1-3&_nc_sid=da31f3&_nc_eui2=AeG_K15tqUvmV-6HEmkzTHM2QLOPcot1b9xAs49yi3Vv3Cy1D_AWTw0i9-5kE8jUzkV1kHA4yoULySMtqKoaflft&_nc_ohc=BauuODv3LY8AX8FLHVL&_nc_ht=scontent.fjnb11-1.fna&oh=c03da21ce0cb1e7b6b9b31ad9c4e7f8e&oe=6121E755" alt="" />
+      </div>
+          <div className="col-lg-7 text=center py-5">
+            <h1>Sign in</h1>
+            </div>
+      </div>
+  </div>      
+</section>
+    <CssBaseline />
+    <Container fluid>
+      <Row>
+    <Col xl={5} md={5}>
+    <Card className="bg-dark text-white" style={{ width: "35rem", height: "35rem"}}>
+  <Card.Img src=""  alt="Card image" />
+  <Card.ImgOverlay>
+    <Card.Title></Card.Title>
+    <Card.Text>
+      
+    </Card.Text>
+    <Card.Text></Card.Text>
+  </Card.ImgOverlay>
+</Card>
 
-
-<div className={classes.root}>
-      <Grid container component="main" className={classes.root}>
-        
-        <Grid style={style} className={classes.image} item xs={6}>
-         
-        </Grid>
-        <Grid item xs={}>
-          <Paper style={styl} className={classes.paper}> 
-          <h2 style={{marginBottom:'30px'}} className="">Sign In</h2>
+    </Col>
+    
+        <Col xs={5} md={7}>
+      <Card style={{ width: '35rem', height: '35rem'}}>
+        <Card.Body>
+          
+          <h2 className="text-center mb-4">Sign In</h2>
           {error && <Alert variant="danger">{error}</Alert>}
-          <form onSubmit={handleSubmit}>
-        <FormGroup id="email"> 
-        <TextField label="Email" variant="filled" type="email" required />
-        <FormControl type="email" ref={emailRef} required>
-          </FormControl>
-          </FormGroup>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group id="email">
 
-        <FormGroup id="passsword">  
-        <TextField label="Password" variant="filled" type="password" required />
-        <FormControl type="passsword" ref={passwordRef} required>
-          </FormControl>
-          </FormGroup>
-        
-            <Button disabled="" className="" type="submit">
+              <Form.Label>Email</Form.Label>
+
+              <Form.Control type="email" ref={emailRef} required />
+
+            </Form.Group>
+            <Form.Group id="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="password" ref={passwordRef} required />
+            </Form.Group><br/>
+            <Button disabled="" className="w-100" type="submit">
               Sign in
             </Button>
-            </form>
-          <div className="">
+          </Form>
+          
+          <div className="w-100 text-center mt-2">
               <Link to="/forgot-passsword">Forgot Password</Link>
             </div>
-       
-        <div className="">
+        </Card.Body>
+        <div className="w-100 text-center mt-2">
       Need an account? <Link to="/signup">Sign Up</Link>
-      </div></Paper>
-        </Grid>
+      </div>
+      </Card>
+     
+      </Col>
+     
+      </Row>
       
-      </Grid>
-    </div>
-
+    </Container> 
+    </>
+    
   );
 }
