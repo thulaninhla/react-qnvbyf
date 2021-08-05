@@ -1,133 +1,157 @@
-import React from 'react';
-import { alpha ,makeStyles } from '@material-ui/core/styles';
+import React, { useState } from 'react';
+import { Card, Button, Alert } from 'react-bootstrap';
+import { useAuth } from './AuthContext';
+import { Link, useHistory } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router,Switch,Route,Link,useHistory,useLocation,useParams} from "react-router-dom";
+import React,{useState} from 'react';
+import{BrowserRouter  as Router, Route, Switch, Link} from "react-router-dom";
+import Sign from "./Pages/Sign";
+import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import InputBase from '@material-ui/core/InputBase';
-import SearchIcon from '@material-ui/icons/Search';
 import Typography from '@material-ui/core/Typography';
-import randomColor from 'randomcolor';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import Link from '@material-ui/core/Link';
+import Button from '@material-ui/core/Button';
+import { Switch, Link} from "react-router-dom";
+import React ,{useState , useEffect} from "react";
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
+import 'firebase/storage';
+import 'firebase/analytics';
+import React from "react";
+import "./style.css";
+import{v4 as uuidv4} from "uuid";
+import React,{useState} from "react";
+import "./style.css";
+//import Form from './comp/Form';
+import ListOfTodo from './ListOfTodo';
+//import DateTime from './comp/DateTime';
+import { Button, Card, Form, Container, Row, Col} from 'react-bootstrap';
+import  ReactCalendar from './comp/ ReactCalendar';
+import Important from "./Important "
+import Calender from "./Calender"
+import Notes from "./Notes"
+import Planned from "./Planned"
+import WbSunnyIcon from '@material-ui/icons/WbSunny';
+import SearchIcon from '@material-ui/icons/Search';
+import StarIcon from '@material-ui/icons/Star';
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
+import EventAvailableIcon from '@material-ui/icons/EventAvailable';
+import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(13),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
+const styles = { borderRadius: '0px', height: '550px',width:'250px',marginLeft:'50px', background:"brown", borderTopLeftRadius: "30px", borderBottomLeftRadius: "30px", align: "left"};
+const styleon = {borderRadius: '0px', height: '550px',width:'452px',marginLeft:'120px',overflowY:"scroll"};
+const style = {borderRadius: '0px', height: '550px',width:'220px',marginLeft:'271px', background:"brown", borderTopRightRadius: "30px", borderBottomRightRadius: "30px"};
 
-  gridLay: {
-    height: '400px',
-    maxWidth: '500px'
-  },  
-  search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
-      width: 'auto',
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'left',
-    justifyContent: 'left',
-  },
-  inputRoot: {
-    color: 'inherit',
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
-      },
-    },
-  },
-  },
-}));
-async function handleLogout() {
-  setError('');
+export default function Todo() {
 
-  try {
-    await logout();
-    history.push('/signin');
-  } catch {
-    setError('Failed to log out');
+const[input , setInput]=useState("");
+const[todos, setTodos]= useState([]);
+
+
+
+  const [error, setError] = useState('');
+  const { currentUser, logout } = useAuth();
+  const history = useHistory();
+
+  async function handleLogout() {
+    setError('');
+
+    try {
+      await logout();
+      history.push('/signin');
+    } catch {
+      setError('Failed to log out');
+    }
   }
-}
-
-export default function AutoGrid() {
-  const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      
-      <Grid container spacing={0} container wrap="wrap" spacing={2}>
-      </Grid>
-      <Grid container spacing={0} className="gridLay" >
-        <Grid item sx={3} style={{ height:"600px"}} style={{background:randomColor()}} >
-          <br />
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-            </div>
-            <InputBase style={{textAlign:"left"}}
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-            <SearchIcon />
 
-          </div><br />
-           <Typography variant="h6" style={{textAlign:"left", marginLeft:"35px"}}>My day</Typography>
-           <br />
-           <Typography variant="h6" style={{textAlign:"left", marginLeft:"35px"}}>Important</Typography>
-           <br />
-           <Typography variant="h6" style={{textAlign:"left", marginLeft:"35px"}}>Plannned</Typography>
-           <br />
-           <Typography variant="h6" style={{textAlign:"left", marginLeft:"35px"}}>My day</Typography>
+<div>
+<Grid className="mainGrid " container spacing={0} >
+<Grid className="firstinGrid " item xs={2} >
+ <Paper style={styles} className="papertwo" >
+<input style={{borderRadius:'5px',border:"2px solid #e0e0e0",width:"170px", height:'30px',fontSize:'15px', margin:'15px', textAlign:"center" }} type="text" placeholder="search"  />
+
+
+<Typography style={{color: 'black', marginTop: '20px',marginRight: '0px', marginLeft: '30px', textDecoration:"none" }} >
+<WbSunnyIcon fontSize="medium" style={{
+               width: ''
+             }}/>
+<Link  to="/" style={{color: 'black', marginTop: '720px',marginRight: '60px', marginLeft: '30px', textDecoration:"none" }} > My Day <i style={{color: '#e65100'}} class="fa fa-sun-o" aria-hidden="true"></i></Link></Typography  >
+
+<Typography style={{color: 'black', marginTop: '20px',marginRight: '0px', marginLeft: '30px', textDecoration:"none" }} >
+<StarIcon fontSize="medium" style={{
+               width: ''
+             }}/>
+<Link  to="/Important" style={{color: 'black', marginTop: '720px', marginRight: '60px',marginLeft: '30px', textDecoration:"none" }} > Important <i style={{color: '#ffff00'}} class="fa fa-star" aria-hidden="true"></i></Link></Typography  >
+
+<Typography style={{color: 'black', marginTop: '20px',marginRight: '0px', marginLeft: '30px', textDecoration:"none" }} >
+<EventAvailableIcon fontSize="medium" style={{
+               width: ''
+             }}/>
+<Link  to="/Planned" style={{color: 'black', marginTop: '720px',marginRight: '60px', marginLeft: '30px', textDecoration:"none" }} > Planned <i style={{color: '#3e2723'}}  class="fa fa-calendar-check-o" aria-hidden="true"></i> </Link></Typography  >
+
+<Typography style={{color: 'black', marginTop: '20px',marginRight: '0px', marginLeft: '30px', textDecoration:"none" }} >
+<CalendarTodayIcon fontSize="medium" style={{
+               width: ''
+             }}/>
+<Link  to="/Calender" style={{color: 'black', marginTop: '720px',marginRight: '60px', marginLeft: '30px', textDecoration:"none" }} > Calender <i style={{color: '#ff9800'}} class="fa fa-calendar" aria-hidden="true"></i> </Link></Typography  >
+
+<Typography style={{color: 'black', marginTop: '20px',marginRight: '0px', marginLeft: '30px', textDecoration:"none" }} >
+<AssignmentIndIcon fontSize="medium" style={{
+               width: ''
+             }}/> 
+<Link  to="/Notes" style={{color: 'black', marginTop: '720px',marginRight: '60px', marginLeft: '30px', textDecoration:"none" }} > Tasks <i  style={{color: '#8d6e63'}} class="fa fa-book" aria-hidden="true"></i></Link></Typography  >
+
+   </Paper>
         </Grid>
-        <Grid item xs={6}>
-          <Paper className={classes.paper} style={{height:"600px" , backgroundImage: " url('https://scontent.fjnb10-1.fna.fbcdn.net/v/t1.6435-9/212240113_4385266501529837_112884892142877978_n.jpg?_nc_cat=110&ccb=1-3&_nc_sid=730e14&_nc_eui2=AeFOkaN2t-9xfbqrZHE-WvIAuQmVQvqdYzm5CZVC-p1jOdzUIingiSLl6qeLi2-OTD4MYDRuhClCGza-CyeBAS1j&_nc_ohc=fZQe5edgIBUAX9gXbPz&_nc_ht=scontent.fjnb10-1.fna&oh=4adf07630c34b844c1e04a928bdf50b2&oe=6131BFBF')"}}></Paper>
-        </Grid>
-        <Grid item xs={3} style={{ height:"600px"}}style={{background:randomColor()}}>
-          <br />
-          <br />
-          <br />
-        <Typography variant="h6" style={{textAlign:"left", marginLeft:"35px"}}>Add to my day</Typography>
-           <br />
-           <Typography variant="h6" style={{textAlign:"left", marginLeft:"35px"}}>Remind me</Typography>
-           <br />
-           <Typography variant="h6" style={{textAlign:"left", marginLeft:"35px"}}>Add due date</Typography>
-           <br />
-           <Typography variant="h6" style={{textAlign:"left", marginLeft:"35px"}}>Repeat</Typography>
-           <br />
-           <Typography variant="h6" style={{textAlign:"left", marginLeft:"35px"}}>Add file</Typography>
-           
-           
+
+<Grid className="firstinGrid " item xs={4}> <Paper style={styleon} className="bgtodo">
+
+<Form input={input}
+setInput={setInput}
+todos={todos}
+setTodos={setTodos}
+/>
+<h5 style={{color:"#e65100", textAlign:"center"}}></h5>
+<ListOfTodo todos={todos}
+setTodos={setTodos}/>
+</Paper>
+</Grid>
+    <Grid className="firstinGrid " item xs={2} >
+        <Paper style={style} className="papertwo" >
+
+ <Typography><h2 style={{ marginLeft:'30px' }}> <AddCircleIcon style={{  fontSize: '30px' , color:'#0099FF' }}/>To do list</h2></Typography>
+<Typography style={{ marginLeft:'30px',fontSize: '10px' ,color:'#24527a', fontWeight:"bold", marginBottom:"50px" }}>
+   {error && <Alert variant="dnager">{error}</Alert>}
+          {currentUser.email}
+          </Typography>
+
+<Typography style={{color: 'black', marginTop: '20px',marginRight: '0px', marginLeft: '30px', textDecoration:"none" }} >
+<Link to="/" style={{color:'black', marginTop:'720px',marginRight:'0px', marginLeft:'0px',textDecoration:"none" }} ><i style={{marginRight:'10px' ,color: '#01579b'}} class="fa fa-plus" aria-hidden="true"></i> Add new list </Link></Typography  >
+
+
+
+<Typography style={{color: 'black', marginTop: '20px',marginRight: '0px', marginLeft: '30px', textDecoration:"none" }} >
+<Link  to="/" style={{color: 'black', marginTop: '720px', marginRight: '0px',marginLeft: '0px', textDecoration:"none" }} ><i  style={{marginRight: '10px',color:"#adf7d1"}}  class="fa fa-plus-square-o" aria-hidden="true"></i> Add to my day  <i style={{color: '#e65100'}} class="fa fa-sun-o" aria-hidden="true"></i> </Link></Typography  >
+
+<Typography style={{color: 'black', marginTop: '20px',marginRight: '0px', marginLeft: '0px', textDecoration:"none" }} >
+<Link  to="/Notes" style={{color: 'black', marginTop: '720px',marginRight: '0px', marginLeft: '30px', textDecoration:"none" }} > <i  style={{marginRight: '10px',color:"#adf7d1"}}  class="fa fa-plus-square-o" aria-hidden="true"></i>Add notes<i  style={{color: '#8d6e63'}} class="fa fa-book" aria-hidden="true"></i></Link></Typography  >
+
+<Typography style={{color: 'black', marginTop: '20px',marginRight: '0px', marginLeft: '0px', textDecoration:"none" }} >
+<Link  to="/Planned" style={{color: 'black', marginTop: '720px',marginLeft: '30px', textDecoration:"none" }} ><i style={{marginRight: '10px',color:"#adf7d1"}}  class="fa fa-plus-square-o" aria-hidden="true"></i>Add new plan <i style={{color: '#3e2723'}}  class="fa fa-calendar-check-o" aria-hidden="true"></i> </Link></Typography  >
+
+
+ </Paper>
         </Grid>
       </Grid>
-      
+
     </div>
   );
 }

@@ -1,12 +1,12 @@
 import React, { useRef, useState } from "react"
+import "./App.css"
 import { Form, Button, Card, Container, Row, Col, Alert } from "react-bootstrap"
 import "firebase/auth"
 import { useAuth } from "./AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import "./mystyle.css"
+
 import CssBaseline from '@material-ui/core/CssBaseline';
-
-
 
 
 export default function Signin() { 
@@ -35,11 +35,11 @@ async function handleSubmit(e) {
   return (
   
   <>
-<section className="login" py-5 bg-light>
-  <div className="container">
-    <div className="row" g-0>
-      <div className="col-lg-5">
-        <img className="img-fluid" alt="" />
+<section className="login" py-5 bg-ligh t>
+  <div className="container" >
+    <div className="row" g-0 >
+      <div className="col-lg-5" style={{ backgroundImage: " url('https://scontent.fjnb1-1.fna.fbcdn.net/v/t1.6435-9/p180x540/221416672_4359414714115016_4589805908274039668_n.jpg?_nc_cat=105&ccb=1-3&_nc_sid=730e14&_nc_eui2=AeG_K15tqUvmV-6HEmkzTHM2QLOPcot1b9xAs49yi3Vv3Cy1D_AWTw0i9-5kE8jUzkV1kHA4yoULySMtqKoaflft&_nc_ohc=rjJzr0uQBhIAX8Ycxzm&_nc_ht=scontent.fjnb1-1.fna&oh=30c6be4f617be0ea4b2dccb14557d34a&oe=61308AFE')", borderTopLeftRadius: "30px", borderBottomLeftRadius: "30px" }} >
+      
       </div>
           <div className="col-lg-7 text-center py-5">
             <h1>Sign in</h1>

@@ -40,3 +40,10 @@
   overflow-y: scroll;
   margin-bottom: 25px;
 }
+.bgtodo {
+  background-image:url("https://images.unsplash.com/photo-1628088272412-c8e94a89c64f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80");
+  height:510px; 
+  width:500px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
