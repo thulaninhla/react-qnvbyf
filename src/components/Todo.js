@@ -42,6 +42,8 @@ import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
+import AddIcon from '@material-ui/icons/Add';
+import AddAlertIcon from '@material-ui/icons/AddAlert';
 
 
 const styles = { borderRadius: '0px', height: '550px',width:'250px',marginLeft:'50px', background:"brown", borderTopLeftRadius: "30px", borderBottomLeftRadius: "30px", align: "left"};
@@ -126,26 +128,34 @@ setTodos={setTodos}/>
 </Grid>
     <Grid className="firstinGrid " item xs={2} >
         <Paper style={style} className="papertwo" >
-
- <Typography><h2 style={{ marginLeft:'30px' }}> <AddCircleIcon style={{  fontSize: '30px' , color:'#0099FF' }}/>To do list</h2></Typography>
+          
 <Typography style={{ marginLeft:'30px',fontSize: '10px' ,color:'#24527a', fontWeight:"bold", marginBottom:"50px" }}>
-   {error && <Alert variant="dnager">{error}</Alert>}
+   {error && <Alert variant="danger">{error}</Alert>}
           {currentUser.email}
           </Typography>
 
 <Typography style={{color: 'black', marginTop: '20px',marginRight: '0px', marginLeft: '30px', textDecoration:"none" }} >
-<Link to="/" style={{color:'black', marginTop:'720px',marginRight:'0px', marginLeft:'0px',textDecoration:"none" }} ><i style={{marginRight:'10px' ,color: '#01579b'}} class="fa fa-plus" aria-hidden="true"></i> Add new list </Link></Typography  >
+<AddIcon fontSize="medium" style={{
+               width: ''
+             }}/> 
+<Link to="/" style={{color:'black', marginTop:'720px',marginRight:'0px', marginLeft:'0px',textDecoration:"none" }} ><i style={{marginRight:'10px' ,color: '#01579b'}} class="fa fa-plus" aria-hidden="true"></i> Add step </Link>
 
-
+</Typography  >
 
 <Typography style={{color: 'black', marginTop: '20px',marginRight: '0px', marginLeft: '30px', textDecoration:"none" }} >
+<WbSunnyIcon fontSize="medium" style={{
+               width: ''
+             }}/>
 <Link  to="/" style={{color: 'black', marginTop: '720px', marginRight: '0px',marginLeft: '0px', textDecoration:"none" }} ><i  style={{marginRight: '10px',color:"#adf7d1"}}  class="fa fa-plus-square-o" aria-hidden="true"></i> Add to my day  <i style={{color: '#e65100'}} class="fa fa-sun-o" aria-hidden="true"></i> </Link></Typography  >
 
-<Typography style={{color: 'black', marginTop: '20px',marginRight: '0px', marginLeft: '0px', textDecoration:"none" }} >
-<Link  to="/Notes" style={{color: 'black', marginTop: '720px',marginRight: '0px', marginLeft: '30px', textDecoration:"none" }} > <i  style={{marginRight: '10px',color:"#adf7d1"}}  class="fa fa-plus-square-o" aria-hidden="true"></i>Add notes<i  style={{color: '#8d6e63'}} class="fa fa-book" aria-hidden="true"></i></Link></Typography  >
+<Typography style={{color: 'black', marginTop: '20px',marginRight: '0px', marginLeft: '30px', textDecoration:"none" }} >
+<AddAlertIcon fontSize="medium" style={{
+               width: ''
+             }}/>
+<Link  to="/Notes" style={{color: 'black', marginTop: '720px',marginRight: '10px', marginLeft: '0px', textDecoration:"none" }} > <i  style={{marginRight: '10px',color:"#adf7d1"}}  class="fa fa-plus-square-o" aria-hidden="true"></i>Remind me<i  style={{color: '#8d6e63'}} class="fa fa-book" aria-hidden="true"></i></Link></Typography  >
 
-<Typography style={{color: 'black', marginTop: '20px',marginRight: '0px', marginLeft: '0px', textDecoration:"none" }} >
-<Link  to="/Planned" style={{color: 'black', marginTop: '720px',marginLeft: '30px', textDecoration:"none" }} ><i style={{marginRight: '10px',color:"#adf7d1"}}  class="fa fa-plus-square-o" aria-hidden="true"></i>Add new plan <i style={{color: '#3e2723'}}  class="fa fa-calendar-check-o" aria-hidden="true"></i> </Link></Typography  >
+<Typography style={{color: 'black', marginTop: '20px',marginRight: '0px', marginLeft: '30px', textDecoration:"none" }} >
+<Link  to="/Planned" style={{color: 'black', marginTop: '720px',marginLeft: '30px', textDecoration:"none" }} ><i style={{marginRight: '10px',color:"#adf7d1"}}  class="fa fa-plus-square-o" aria-hidden="true"></i>Add notes <i style={{color: '#3e2723'}}  class="fa fa-calendar-check-o" aria-hidden="true"></i> </Link></Typography  >
 
 
  </Paper>
