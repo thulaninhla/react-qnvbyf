@@ -10,6 +10,9 @@ import { Scrollbars } from 'react-custom-scrollbars';
 import 'firebase/auth';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+
 
 function Todo({ todo, index, markTodo, removeTodo }) {
 
@@ -128,6 +131,7 @@ function App() {
         </div>
       </div>
     </div>
+
     
   );
 }
