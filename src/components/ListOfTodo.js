@@ -12,7 +12,6 @@ import 'firebase/firestore';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
-
 function Todo({ todo, index, markTodo, removeTodo }) {
 
   return (
@@ -36,14 +35,17 @@ function Todo({ todo, index, markTodo, removeTodo }) {
 
 function FormTodo({ addTodo }) {
   const [value, setValue] = React.useState("");
-
+  
   const handleSubmit = e => {
     e.preventDefault();
     if (!value) return;
     addTodo(value);
     setValue("");
   };
-
+  const onCreate = () =>{
+    const db =firebase.firestore()
+    db.collection("users").add({activity:input})
+  }
   return (
     <>
     
@@ -52,9 +54,30 @@ function FormTodo({ addTodo }) {
       <Form.Label><b>Add Task</b></Form.Label>
       <Form.Control type="text" className="input" value={value} onChange={e => setValue(e.target.value)} placeholder="Add new task" style={{width:"370px", height:'40px', margin:'15px' }}/>
     </Form.Group>
-    <Button variant="primary mb-3" type="submit" style={{ margin:'15px' }}>
+    <Button variant="primary mb-3" type="submit" style={{ margin:'15px' }}
+    >
       Submit
-    </Button>
+    </Button >
+    <Button style={{
+         
+          }} onClick={()=>{ 
+  let val=[]
+  console.log("getting")
+  console.log(Datalist)
+  firebase.firestore().collection('users').get().then(response=>{
+  console.log(response)
+  response.forEach(data=>{
+    val.push({...{id:data.id},...data.data()})
+    console.log(data.id);
+   
+})
+setData(val)
+   console.log("list = ",Datalist)
+})
+
+}}
+    >Display list
+      </Button>
   </Form>
   </>
   );

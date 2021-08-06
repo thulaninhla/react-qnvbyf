@@ -26,7 +26,7 @@ import "./style.css";
 import{v4 as uuidv4} from "uuid";
 import React,{useState} from "react";
 import "./style.css";
-import MyForm from './MyForm';
+import Form from './MyForm';
 import ListOfTodo from './ListOfTodo';
 import DateTime from './DateTime';
 import { Button, Card, Form, Container, Row, Col} from 'react-bootstrap';

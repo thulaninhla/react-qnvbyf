@@ -39,9 +39,10 @@ const Form = ({ input, setInput, todos, setTodos }) => {
             width: '300px',
             height: '40px',
             padding:'15px',
+            margin:'15px'
           }}
           type="text"
-          placeholder="Type something......"
+          placeholder="store todo"
           className="task-input"
           value={input}
           required
@@ -55,24 +56,37 @@ const Form = ({ input, setInput, todos, setTodos }) => {
             width: '80px',
             color: 'white',
             borderStyle: 'none',
-            padding:"9px"
+            padding:"9px",
+            margin:'15px',
+            marginLeft:'30px'
           }}
           className="button-add"
           type="submit"
           onClick={onCreate}
 
         >
-          Add
+          Save
         </button>
+
+
+
+
+
+
+
       </form>
+
+
+      
       <button style={{
+        textAlign: 'center',
             backgroundColor: 'rgba(3 , 3 , 3 , 0.2)',
             height: '30px',
             width: '80px',
             color: 'white',
             borderStyle: 'none',
             padding:"0px",
-            marginLeft:'285px '
+            marginLeft:'15px '
           }} onClick={()=>{ 
   let val=[]
   console.log("getting")

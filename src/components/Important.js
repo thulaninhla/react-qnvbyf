@@ -24,7 +24,7 @@ import{v4 as uuidv4} from "uuid";
 import React,{useState} from "react";
 import "./style.css";
 import Form from './MyForm';
-import ListOfTodo from './ListOfTodo';
+import Todo from './ListOfTodo';
 import DateTime from './DateTime';
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import StarIcon from '@material-ui/icons/Star';
@@ -111,7 +111,7 @@ todos={todos}
 setTodos={setTodos}
 />
 <h5 style={{color:"#e65100", textAlign:"center"}}></h5>
-<ListOfTodo todos={todos}
+<Todo todos={todos}
 setTodos={setTodos}/>
 </Paper>
 </Grid>
