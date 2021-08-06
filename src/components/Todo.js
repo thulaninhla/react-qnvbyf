@@ -85,7 +85,7 @@ const[todos, setTodos]= useState([]);
 <WbSunnyIcon fontSize="medium" style={{
                width: ''
              }}/>
-<Link  to="/" style={{color: 'black', marginTop: '720px',marginRight: '60px', marginLeft: '30px', textDecoration:"none" }} > My Day <i style={{color: '#e65100'}} class="fa fa-sun-o" aria-hidden="true"></i></Link></Typography  >
+<Link  to="/ListOfTodo" style={{color: 'black', marginTop: '720px',marginRight: '60px', marginLeft: '30px', textDecoration:"none" }} > My Day <i style={{color: '#e65100'}} class="fa fa-sun-o" aria-hidden="true"></i></Link></Typography  >
 
 <Typography style={{color: 'black', marginTop: '20px',marginRight: '0px', marginLeft: '30px', textDecoration:"none" }} >
 <StarIcon fontSize="medium" style={{

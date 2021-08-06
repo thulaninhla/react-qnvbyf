@@ -19,7 +19,7 @@ function Todo({ todo, index, markTodo, removeTodo }) {
   return (
     
    
-    <div className="todo">
+    <div className="todo" style={{width:'400px', height:'0px', margin:'4px' }}>
       
       <span style={{ textDecoration: todo.isDone ? "line-through" : "" }}>{todo.text}</span>
       
@@ -51,8 +51,8 @@ function FormTodo({ addTodo }) {
     <Form onSubmit={handleSubmit} > 
     <Form.Group className="text-center mb-4">
       <Form.Label><b>Add Task</b></Form.Label>
-      <Form.Control type="text" className="input" value={value} onChange={e => setValue(e.target.value)} placeholder="Add new task" style={{ marginLeft:'15px' }}/>
-    </Form.Group><br />
+      <Form.Control type="text" className="input" value={value} onChange={e => setValue(e.target.value)} placeholder="Add new task" style={{width:"370px", height:'40px', margin:'15px' }}/>
+    </Form.Group>
     <Button variant="primary mb-3" type="submit" style={{ margin:'15px' }}>
       Submit
     </Button>
@@ -108,7 +108,6 @@ function App() {
         </Button>
        <h5 className="text-center mb-4"><strong>Signed in as:</strong> {currentUser.email} </h5>
       <h6 style={{ margin:'15px' }}> Date & Time: {new Date().toLocaleString() + " "}</h6>
-      <br />
         
         <FormTodo addTodo={addTodo} />
         <div>
