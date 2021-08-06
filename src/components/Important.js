@@ -4,9 +4,7 @@ import { useAuth } from './AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 import React from "react";
 import { BrowserRouter as Router,Switch,Route,Link,useHistory,useLocation,useParams} from "react-router-dom";
-import React,{useState} from 'react';
 import{BrowserRouter  as Router, Route, Switch, Link} from "react-router-dom";
-import Sign from "./Pages/Sign";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -21,22 +19,14 @@ import "firebase/auth";
 import "firebase/firestore";
 import 'firebase/storage';
 import 'firebase/analytics';
-import React from "react";
 import "./style.css";
 import{v4 as uuidv4} from "uuid";
 import React,{useState} from "react";
 import "./style.css";
-import MyForm from './MyForm';
+import Form from './MyForm';
 import ListOfTodo from './ListOfTodo';
 import DateTime from './DateTime';
-import { Button, Card, Form, Container, Row, Col} from 'react-bootstrap';
-import  ReactCalendar from './ReactCalendar';
-import Important from "./Important "
-import Calender from "./Calender"
-import Notes from "./Notes"
-import Planned from "./Planned"
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
-import SearchIcon from '@material-ui/icons/Search';
 import StarIcon from '@material-ui/icons/Star';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';

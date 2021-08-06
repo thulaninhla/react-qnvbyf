@@ -44,7 +44,7 @@ async function handleSubmit(e) {
           <div className="col-lg-7 text-center py-5">
             <h1>Sign in</h1>
             {error && <Alert variant="danger">{error}</Alert>}
-            <Form>
+            
             <form onSubmit={handleSubmit}>
               <div className="form-row py-3 pt-5" >
                 <div className="offset-1 col-lg-10">
@@ -53,7 +53,7 @@ async function handleSubmit(e) {
                 </div>
                 <div className="form-row">
                 <div className="offset-1 col-lg-10">
-                <input type="passsword"  ref={passwordRef} className="inp px-3" placeholder="Passsword" required />
+                <input type="passsword" id="passsword" ref={passwordRef} className="inp px-3" placeholder="Passsword" required />
               </div>
                 </div>
           
@@ -71,7 +71,7 @@ async function handleSubmit(e) {
       Need an account? <Link to="/signup">Sign Up</Link>
       </div>   
             </form>    
-            </Form>
+           
             </div>
       </div>
   </div>   

@@ -8,7 +8,10 @@ import Signin from "./Signin"
 import PrivateRoute from "./PrivateRoute"
 import ForgotPassword from "./ForgotPassword"
 import Grid from '@material-ui/core/Grid'
+import Important from "./Important "
 import Calender from "./Calender"
+import Notes from "./Notes"
+import Planned from "./Planned"
 
 function App() {
   return (
@@ -26,6 +29,10 @@ function App() {
               <PrivateRoute exact path="/" component={Todo} />
               <Route path="/signup" component={Signup} />
               <Route path="/forgot-passsword" component={ForgotPassword} />
+              <Route path="/Calender" component={Calender} />
+              <Route path="/Planned" component={Planned} />
+              <Route path="/Notes" component={Notes} />
+              <Route path="/Important" component={Important} />
              
                 </Switch>
           </AuthProvider>

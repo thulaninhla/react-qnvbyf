@@ -26,11 +26,11 @@ import "./style.css";
 import{v4 as uuidv4} from "uuid";
 import React,{useState} from "react";
 import "./style.css";
-//import Form from './comp/Form';
+import MyForm from './MyForm';
 import ListOfTodo from './ListOfTodo';
-//import DateTime from './comp/DateTime';
+import DateTime from './DateTime';
 import { Button, Card, Form, Container, Row, Col} from 'react-bootstrap';
-import  ReactCalendar from './comp/ ReactCalendar';
+import  ReactCalendar from './ReactCalendar';
 import Important from "./Important "
 import Calender from "./Calender"
 import Notes from "./Notes"
@@ -46,7 +46,6 @@ import AddIcon from '@material-ui/icons/Add';
 import AddAlertIcon from '@material-ui/icons/AddAlert';
 
 
-
 const styles = { borderRadius: '0px', height: '550px',width:'250px',marginLeft:'50px', background:"brown", borderTopLeftRadius: "30px", borderBottomLeftRadius: "30px", align: "left"};
 const styleon = {borderRadius: '0px', height: '550px',width:'452px',marginLeft:'120px',overflowY:"scroll"};
 const style = {borderRadius: '0px', height: '550px',width:'220px',marginLeft:'271px', background:"brown", borderTopRightRadius: "30px", borderBottomRightRadius: "30px"};
@@ -55,8 +54,6 @@ export default function Todo() {
 
 const[input , setInput]=useState("");
 const[todos, setTodos]= useState([]);
-
-
 
   const [error, setError] = useState('');
   const { currentUser, logout } = useAuth();
