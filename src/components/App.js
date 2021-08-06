@@ -7,7 +7,8 @@ import Todo from "./Todo"
 import Signin from "./Signin"
 import PrivateRoute from "./PrivateRoute"
 import ForgotPassword from "./ForgotPassword"
-import Grid from '@material-ui/core/Grid';
+import Grid from '@material-ui/core/Grid'
+import Calender from "./Calender"
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <PrivateRoute exact path="/" component={Todo} />
               <Route path="/signup" component={Signup} />
               <Route path="/forgot-passsword" component={ForgotPassword} />
+             
                 </Switch>
           </AuthProvider>
         </Router>

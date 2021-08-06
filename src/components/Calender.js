@@ -27,10 +27,10 @@ import "./style.css";
 import{v4 as uuidv4} from "uuid";
 import React,{useState} from "react";
 import "./style.css";
-import Form from './comp/Form';
-import TodosList from './comp/TodosList';
-import  ReactCalendar from './comp/ ReactCalendar';
-import Important from "./Important "
+//import Form from './comp/Form';
+//import TodosList from './comp/TodosList';
+//import  ReactCalendar from './comp/ ReactCalendar';
+//import Important from "./Important "
 import Calender from "./Calender"
 import Notes from "./Notes"
 import Planned from "./Planned"
