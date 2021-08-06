@@ -46,6 +46,7 @@ import AddIcon from '@material-ui/icons/Add';
 import AddAlertIcon from '@material-ui/icons/AddAlert';
 
 
+
 const styles = { borderRadius: '0px', height: '550px',width:'250px',marginLeft:'50px', background:"brown", borderTopLeftRadius: "30px", borderBottomLeftRadius: "30px", align: "left"};
 const styleon = {borderRadius: '0px', height: '550px',width:'452px',marginLeft:'120px',overflowY:"scroll"};
 const style = {borderRadius: '0px', height: '550px',width:'220px',marginLeft:'271px', background:"brown", borderTopRightRadius: "30px", borderBottomRightRadius: "30px"};
@@ -81,35 +82,36 @@ const[todos, setTodos]= useState([]);
 <input style={{borderRadius:'5px',border:"2px solid #e0e0e0",width:"170px", height:'30px',fontSize:'15px', margin:'15px', textAlign:"center" }} type="text" placeholder="search"  />
 
 
-<Typography style={{color: 'black', marginTop: '20px',marginRight: '0px', marginLeft: '30px', textDecoration:"none" }} >
+<Typography style={{color: 'black', marginTop: '20px',marginRight: '0px', marginLeft: '30px', textDecoration:"none"}} >
 <WbSunnyIcon fontSize="medium" style={{
                width: ''
-             }}/>
-<Link  to="/ListOfTodo" style={{color: 'black', marginTop: '720px',marginRight: '60px', marginLeft: '30px', textDecoration:"none" }} > My Day <i style={{color: '#e65100'}} class="fa fa-sun-o" aria-hidden="true"></i></Link></Typography  >
+             }} />
+
+<Link to="/" style={{color: 'black', marginTop: '720px',marginRight: '60px', marginLeft: '10px', textDecoration:"none" }} > My Day <i style={{color: '#e65100'}} class="fa fa-sun-o" aria-hidden="true"></i></Link></Typography  >
 
 <Typography style={{color: 'black', marginTop: '20px',marginRight: '0px', marginLeft: '30px', textDecoration:"none" }} >
 <StarIcon fontSize="medium" style={{
                width: ''
              }}/>
-<Link  to="/Important" style={{color: 'black', marginTop: '720px', marginRight: '60px',marginLeft: '30px', textDecoration:"none" }} > Important <i style={{color: '#ffff00'}} class="fa fa-star" aria-hidden="true"></i></Link></Typography  >
+<Link  to="/Important" style={{color: 'black', marginTop: '720px', marginRight: '60px',marginLeft: '10px', textDecoration:"none" }} > Important <i style={{color: '#ffff00'}} class="fa fa-star" aria-hidden="true"></i></Link></Typography  >
 
 <Typography style={{color: 'black', marginTop: '20px',marginRight: '0px', marginLeft: '30px', textDecoration:"none" }} >
 <EventAvailableIcon fontSize="medium" style={{
                width: ''
              }}/>
-<Link  to="/Planned" style={{color: 'black', marginTop: '720px',marginRight: '60px', marginLeft: '30px', textDecoration:"none" }} > Planned <i style={{color: '#3e2723'}}  class="fa fa-calendar-check-o" aria-hidden="true"></i> </Link></Typography  >
+<Link  to="/Planned" style={{color: 'black', marginTop: '720px',marginRight: '60px', marginLeft: '10px', textDecoration:"none" }} > Planned <i style={{color: '#3e2723'}}  class="fa fa-calendar-check-o" aria-hidden="true"></i> </Link></Typography  >
 
 <Typography style={{color: 'black', marginTop: '20px',marginRight: '0px', marginLeft: '30px', textDecoration:"none" }} >
 <CalendarTodayIcon fontSize="medium" style={{
                width: ''
              }}/>
-<Link  to="/Calender" style={{color: 'black', marginTop: '720px',marginRight: '60px', marginLeft: '30px', textDecoration:"none" }} > Calender <i style={{color: '#ff9800'}} class="fa fa-calendar" aria-hidden="true"></i> </Link></Typography  >
+<Link  to="/Calender" style={{color: 'black', marginTop: '720px',marginRight: '60px', marginLeft: '10px', textDecoration:"none" }} > Calender <i style={{color: '#ff9800'}} class="fa fa-calendar" aria-hidden="true"></i> </Link></Typography  >
 
 <Typography style={{color: 'black', marginTop: '20px',marginRight: '0px', marginLeft: '30px', textDecoration:"none" }} >
 <AssignmentIndIcon fontSize="medium" style={{
                width: ''
              }}/> 
-<Link  to="/Notes" style={{color: 'black', marginTop: '720px',marginRight: '60px', marginLeft: '30px', textDecoration:"none" }} > Tasks <i  style={{color: '#8d6e63'}} class="fa fa-book" aria-hidden="true"></i></Link></Typography  >
+<Link  to="/Notes" style={{color: 'black', marginTop: '720px',marginRight: '60px', marginLeft: '10px', textDecoration:"none" }} > Tasks <i  style={{color: '#8d6e63'}} class="fa fa-book" aria-hidden="true"></i></Link></Typography  >
 
    </Paper>
         </Grid>
