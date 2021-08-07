@@ -74,7 +74,7 @@ const[todos, setTodos]= useState([]);
 
 <div>
 <Grid className="mainGrid " container spacing={0} >
-<Grid className="firstinGrid " item xs={2} >
+<Grid className="firstinGrid " item xs={2} style={{ flexGrow: 1}}>
  <Paper style={styles} className="papertwo" >
 <input style={{borderRadius:'5px',border:"2px solid #e0e0e0",width:"170px", height:'30px',fontSize:'15px', margin:'15px', textAlign:"center" }} type="text" placeholder="search"  />
 
