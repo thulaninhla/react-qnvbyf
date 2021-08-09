@@ -53,7 +53,8 @@ async function handleSubmit(e) {
                 </div>
                 <div className="form-row">
                 <div className="offset-1 col-lg-10">
-                <input type="passsword" id="passsword" ref={passwordRef} className="inp px-3" placeholder="Passsword" required />
+                <input type="password" id="password" ref={passwordRef} className="inp px-3"
+                 placeholder="Password" required />
               </div>
                 </div>
           
