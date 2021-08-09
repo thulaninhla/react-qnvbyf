@@ -22,7 +22,6 @@ import "firebase/firestore";
 import 'firebase/storage';
 import 'firebase/analytics';
 import React from "react";
-import "./style.css";
 import{v4 as uuidv4} from "uuid";
 import React,{useState} from "react";
 import "./style.css";
