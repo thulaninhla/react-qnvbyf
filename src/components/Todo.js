@@ -45,9 +45,9 @@ import AddIcon from '@material-ui/icons/Add';
 import AddAlertIcon from '@material-ui/icons/AddAlert';
 
 
-const styles = { borderRadius: '0px', height: '550px',width:'250px',marginLeft:'50px', background:"#D2BC2D", borderTopLeftRadius: "30px", borderBottomLeftRadius: "30px", align: "left"};
+const styles = { borderRadius: '0px', height: '550px',width:'250px',marginLeft:'50px', background:"#D2BC2D", borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px", align: "left"};
 const styleon = {borderRadius: '0px', height: '550px',width:'452px',marginLeft:'120px',overflowY:"scroll"};
-const style = {borderRadius: '0px', height: '550px',width:'220px',marginLeft:'271px', background:"#D2BC2D", borderTopRightRadius: "30px", borderBottomRightRadius: "30px"};
+const style = {borderRadius: '0px', height: '550px',width:'220px',marginLeft:'271px', background:"#D2BC2D", borderTopRightRadius: "10px", borderBottomRightRadius: "10px"};
 
 export default function Todo() {
 

@@ -58,26 +58,6 @@ function FormTodo({ addTodo }) {
     >
       Submit
     </Button >
-    <Button style={{
-         
-          }} onClick={()=>{ 
-  let val=[]
-  console.log("getting")
-  console.log(Datalist)
-  firebase.firestore().collection('users').get().then(response=>{
-  console.log(response)
-  response.forEach(data=>{
-    val.push({...{id:data.id},...data.data()})
-    console.log(data.id);
-   
-})
-setData(val)
-   console.log("list = ",Datalist)
-})
-
-}}
-    >Display list
-      </Button>
   </Form>
   </>
   );
@@ -128,9 +108,7 @@ function App() {
           <Button variant="link" onClick={handleLogout}>
           Sign Out
         </Button>
-       <h5 className="text-center mb-4"><strong>Signed in as:</strong> {currentUser.email} </h5>
-      <h6 style={{ margin:'15px' }}> Date & Time: {new Date().toLocaleString() + " "}</h6>
-        
+      
         <FormTodo addTodo={addTodo} />
         <div>
           <>
