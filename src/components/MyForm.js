@@ -67,18 +67,9 @@ const Form = ({ input, setInput, todos, setTodos }) => {
         >
           Save
         </button>
-
-
-
-
-
-
-
       </form>
 
-
-      
-      <button style={{
+       <button style={{
         textAlign: 'center',
             backgroundColor: 'rgba(3 , 3 , 3 , 0.2)',
             height: '30px',

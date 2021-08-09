@@ -4,8 +4,7 @@ import { Button, Card, Form, Container, Row, Col} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useAuth } from './AuthContext';
 import { Link, useHistory } from 'react-router-dom';
-//import "./style.css";
-import { Scrollbars } from 'react-custom-scrollbars';
+import "./style.css";
 import 'firebase/auth';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
@@ -16,7 +15,6 @@ function Todo({ todo, index, markTodo, removeTodo }) {
 
   return (
     
-   
     <div className="todo" style={{width:'400px', height:'0px', margin:'4px' }}>
       
       <span style={{ textDecoration: todo.isDone ? "line-through" : "" }}>{todo.text}</span>
