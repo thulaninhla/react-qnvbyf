@@ -6,7 +6,6 @@ import React from "react";
 import { BrowserRouter as Router,Switch,Route,Link,useHistory,useLocation,useParams} from "react-router-dom";
 import React,{useState} from 'react';
 import{BrowserRouter  as Router, Route, Switch, Link} from "react-router-dom";
-import Sign from "./Pages/Sign";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -75,7 +74,7 @@ const[todos, setTodos]= useState([]);
 <Grid className="mainGrid " container spacing={0} >
 <Grid className="firstinGrid " item xs={2} style={{ flexGrow: 1}}>
  <Paper style={styles} className="papertwo" >
-<input style={{borderRadius:'5px',border:"2px solid #e0e0e0",width:"170px", height:'30px',fontSize:'15px', margin:'15px', textAlign:"center" }} type="text" placeholder="search"  />
+<input style={{borderRadius:'5px',border:"2px solid #e0e0e0",width:"170px", height:'30px',fontSize:'15px', margin:'15px', textAlign:"left" }} type="text" placeholder="search"  />
 
 
 <Typography style={{color: 'black', marginTop: '20px',marginRight: '0px', marginLeft: '30px', textDecoration:"none"}} >
@@ -119,9 +118,9 @@ setInput={setInput}
 todos={todos}
 setTodos={setTodos}
 />
-<h5 style={{color:"#e65100", textAlign:"center"}}></h5>
+<h5 style={{color:"#e65100", textAlign:"left"}}></h5>
 <ListOfTodo todos={todos}
-setTodos={setTodos}/>
+setTodos={setTodos} align="left "/>
 </Paper>
 </Grid>
     <Grid className="firstinGrid " item xs={2} >

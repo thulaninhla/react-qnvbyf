@@ -1,16 +1,12 @@
-import React, { useState } from "react";
-import "./App.css";
-import { Button, Card, Form, Container, Row, Col} from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { useAuth } from './AuthContext';
-import { Link, useHistory } from 'react-router-dom';
-import "./style.css";
-import 'firebase/auth';
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import { v4 as uuidv4 } from 'react';
+import React from 'react';
+import './style.css';
+import { v4 as uuidv4 } from 'uuid';
+import React, { useState } from 'react';
+import firebase from "firebase/app";
+import "firebase/firestore"
 
-function Todo({ todo, index, markTodo, removeTodo }) {
+
+const Form = ({ input, setInput, todos, setTodos }) => {
 
   const [Datalist,setData]=useState([{activity:''}])
 
@@ -18,6 +14,8 @@ function Todo({ todo, index, markTodo, removeTodo }) {
     const db =firebase.firestore()
     db.collection("users").add({activity:input})
   }
+  
+
   const onInputChange = event => {
     setInput(event.target.value);
   };
@@ -28,118 +26,94 @@ function Todo({ todo, index, markTodo, removeTodo }) {
   };
 
   return (
-    
-    <div className="todo" style={{width:'400px', height:'0px', margin:'4px' }}>
-      
-      <span style={{ textDecoration: todo.isDone ? "line-through" : "" }}>{todo.text}</span>
-      
-      <div>
-        <Button variant="outline-success" onClick={() => markTodo(index)}>✓</Button>{' '}
-        <Button variant="outline-danger" onClick={() => removeTodo(index)}>✕</Button>
-        
+    <div className="todo">
+      <form onSubmit={onFormSubmit}>
+        <input
+          style={{
+            marginBottom: '10px',
+            borderStyle: 'none',
+            borderRadius: '0px',
+            textAlign: 'left',
+            marginLeft: '150px',
+            marginTop: '50px',
+            width: '300px',
+            height: '40px',
+            padding:'15px',
+            margin:'15px'
+          }}
+          type="text"
+          placeholder="store todo"
+          className="task-input"
+          value={input}
+          required
+          onChange={onInputChange}
+        />
+
+        <button
+          style={{
+            backgroundColor: '#00e676',
+            height: '40px',
+            width: '80px',
+            color: 'white',
+            borderStyle: 'none',
+            padding:"9px",
+            margin:'15px',
+            marginLeft:'30px'
+          }}
+          className="button-add"
+          type="submit"
+          onClick={onCreate}
+
+        >
+          Save
+        </button>
+      </form>
+
+       <button style={{
+        textAlign: 'left',
+            backgroundColor: 'rgba(3 , 3 , 3 , 0.2)',
+            height: '30px',
+            width: '80px',
+            color: 'white',
+            borderStyle: 'none',
+            padding:"0px",
+            marginLeft:'15px '
+          }} onClick={()=>{ 
+  let val=[]
+  console.log("getting")
+  console.log(Datalist)
+  firebase.firestore().collection('users').get().then(response=>{
+  console.log(response)
+  response.forEach(data=>{
+       
+    val.push({...{id:data.id},...data.data()})
+     console.log(data.id);
+   
+     //setData(...Datalist,val)
+
+     })
+setData(val)
+   //console.log("list = ",val)
+   console.log("list = ",Datalist)
+
+})
+}}>View  </button>
+  <div className = "App" >
+  <ul  style={{listStyle:"none",  marginTop: '1px', background:"rgba(0 , 0 , 0 , 0.5)" ,width:"550px",marginLeft:'50px ' }  } >
+  {Datalist.map(person => {
+    return (
+      <div style={{  marginTop: '20px',color:"#FFFFFF"}} key={person.id} onClick={(data)=>{
+        console.log("click",person)
+
+      }}>
+        {person.activity} 
       </div>
-      
+    )
+  })}
+</ul>
+     </div>
     </div>
-  
   );
-}
+};
 
-function FormTodo({ addTodo }) {
-  const [value, setValue] = React.useState("");
-  
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (!value) return;
-    addTodo(value);
-    setValue("");
-  };
- 
-  return (
-    <>
-    
-    <Form onSubmit={handleSubmit} > 
-    <Form.Group className="text-center mb-4">
-      <Form.Label><b>Add Task</b></Form.Label>
-      <Form.Control type="text" className="input" value={value} onChange={e => setValue(e.target.value)} placeholder="Add new task" style={{width:"370px", height:'40px', margin:'15px' }}/>
-    </Form.Group>
-    <Button variant="primary mb-3" type="submit" style={{ margin:'15px' }}
-    >
-      Submit
-    </Button >
-  </Form>
-  </>
-  );
-  
-}
-
-function App() {
-  const [todos, setTodos] = React.useState([
-    
-  ]);
-
-  const addTodo = text => {
-    const newTodos = [...todos, { text }];
-    setTodos(newTodos);
-  };
-
-  const markTodo = index => {
-    const newTodos = [...todos];
-    newTodos[index].isDone = true;
-    setTodos(newTodos);
-  };
-
-  const removeTodo = index => {
-    const newTodos = [...todos];
-    newTodos.splice(index, 1);
-    setTodos(newTodos);
-  };
-
-  const [error, setError] = useState('');
-  const { currentUser, logout } = useAuth();
-  const history = useHistory();
-
-
-  async function handleLogout() {
-    setError('');
-
-    try {
-      await logout();
-      history.push('/signin');
-    } catch {
-      setError('Failed to log out');
-    }
-  }
-
-  return (
-    <>
-      <h3 className="text-left mb-4" style={{ margin:'15px' }}>To-Do-List</h3>
-          <Button variant="link" onClick={handleLogout}>
-          Sign Out
-        </Button>
-      
-        <FormTodo addTodo={addTodo} />
-        <div>
-          <>
-          {todos.map((todo, index) => (
-            <Card>
-              <Card.Body>
-                <Todo
-                key={index}
-                index={index}
-                todo={todo}
-                markTodo={markTodo}
-                removeTodo={removeTodo}
-                />
-              </Card.Body>
-            </Card>
-
-          ))} </>
-         
-        </div>
-  </>
- 
-  );
-}
-
-
-export default App;
+export default Form;
