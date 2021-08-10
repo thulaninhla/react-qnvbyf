@@ -86,16 +86,12 @@ const Form = ({ input, setInput, todos, setTodos }) => {
   console.log(response)
   response.forEach(data=>{
        
-  
-    
     val.push({...{id:data.id},...data.data()})
      console.log(data.id);
    
      //setData(...Datalist,val)
 
-     
-
-   })
+     })
 setData(val)
    //console.log("list = ",val)
    console.log("list = ",Datalist)

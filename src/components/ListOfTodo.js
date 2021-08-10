@@ -8,10 +8,24 @@ import "./style.css";
 import 'firebase/auth';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
+import { v4 as uuidv4 } from 'react';
 
 function Todo({ todo, index, markTodo, removeTodo }) {
+
+  const [Datalist,setData]=useState([{activity:''}])
+
+  const onCreate = () =>{
+    const db =firebase.firestore()
+    db.collection("users").add({activity:input})
+  }
+  const onInputChange = event => {
+    setInput(event.target.value);
+  };
+  const onFormSubmit = event => {
+    event.preventDefault();
+    setTodos([...todos, { id: uuidv4(), title: input, completed: false }]);
+    setInput('');
+  };
 
   return (
     
@@ -20,7 +34,6 @@ function Todo({ todo, index, markTodo, removeTodo }) {
       <span style={{ textDecoration: todo.isDone ? "line-through" : "" }}>{todo.text}</span>
       
       <div>
-        
         <Button variant="outline-success" onClick={() => markTodo(index)}>✓</Button>{' '}
         <Button variant="outline-danger" onClick={() => removeTodo(index)}>✕</Button>
         
@@ -40,10 +53,7 @@ function FormTodo({ addTodo }) {
     addTodo(value);
     setValue("");
   };
-  const onCreate = () =>{
-    const db =firebase.firestore()
-    db.collection("users").add({activity:input})
-  }
+ 
   return (
     <>
     
