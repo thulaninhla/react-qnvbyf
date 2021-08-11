@@ -10,7 +10,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import { v4 as uuidv4 } from 'react';
 import {auth, db} from '../Config/Config'
-import { Todos } from './Todos';
+import { Todo } from './Todo';
 import { Modal } from './Modal';
 
 
@@ -80,7 +80,7 @@ editTodoValue, editModal, updateTodoHandler}) => {
             
             </form>
             {todoError&&<div className='error-msg'>{todoError}</div>}
-            <Todos todos={todos} deleteTodo={deleteTodo}
+            <Todo todos={todos} deleteTodo={deleteTodo}
              editModal={editModal}/>
             </div>
 
