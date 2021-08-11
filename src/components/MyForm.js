@@ -14,7 +14,6 @@ import { Todo } from './Todo';
 import { Modal } from './Modal';
 
 
-
 export const Home = ({currentUser, todos, deleteTodo,
 editTodoValue, editModal, updateTodoHandler}) => {
 
