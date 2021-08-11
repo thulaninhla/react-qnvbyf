@@ -6,7 +6,9 @@ import { Link, useHistory } from 'react-router-dom';
 import "./style.css";
 import "firebase/firestore";
 
-export default function Signup() {
+
+
+  export default function Signup() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
@@ -14,9 +16,25 @@ export default function Signup() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+  
+  const [email, setEmail]=useState('');
+  const [password, setPassword]=useState(''); 
+
+ const [registerationError, setRegisterationError]=useState('');
 
   async function handleSubmit(e) {
     e.preventDefault();
+    auth.createUserWithEmailAndPassword(email, password).then((cred)=>{
+      db.collection('users').doc(cred.user.uid).set({
+          Email: email,
+          Password: password
+      }).then(()=>{
+          setEmail('');
+          setPassword('');
+          setRegisterationError('');
+          props.history.push('/login');
+      }).catch(err=>setRegisterationError(err.message))
+  }).catch(err=>setRegisterationError(err.message))
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError('Password do not match');
