@@ -5,7 +5,7 @@ import "firebase/auth"
 import { useAuth } from "./AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import "./mystyle.css"
-
+import 'firebase/firestore';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 

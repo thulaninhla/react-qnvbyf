@@ -10,6 +10,7 @@ const app = firebase.initializeApp({
   appId: "1:51857395050:web:3e1c36293fd7ae3d67e913"
   
 })
+// Initialize irebase
 
 export const auth = app.auth();
 export default app;

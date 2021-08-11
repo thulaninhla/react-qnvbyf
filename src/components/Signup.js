@@ -4,6 +4,7 @@ import 'firebase/auth';
 import { useAuth } from './AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 import "./style.css";
+import "firebase/firestore";
 
 export default function Signup() {
   const emailRef = useRef();
