@@ -25,7 +25,7 @@ import{v4 as uuidv4} from "uuid";
 import React,{useState} from "react";
 import "./style.css";
 import Form from './MyForm';
-import ListOfTodo from './ListOfTodo';
+//import ListOfTodo from './ListOfTodo';
 import DateTime from './DateTime';
 import { Button, Card, Form, Container, Row, Col} from 'react-bootstrap';
 import  ReactCalendar from './ReactCalendar';
@@ -119,8 +119,7 @@ todos={todos}
 setTodos={setTodos}
 />
 <h5 style={{color:"#e65100", textAlign:"left"}}></h5>
-<ListOfTodo todos={todos}
-setTodos={setTodos} align="left "/>
+
 </Paper>
 </Grid>
     <Grid className="firstinGrid " item xs={2} >
