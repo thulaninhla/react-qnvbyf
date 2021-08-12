@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import { functions } from 'firebase';
 
 const app = firebase.initializeApp({
   apiKey: "AIzaSyBr6Y6dGzsV2qg71ldTmxZ_nS26XBBjRs4",
@@ -11,8 +12,9 @@ const app = firebase.initializeApp({
   appId: "1:51857395050:web:3e1c36293fd7ae3d67e913"
   
 })
-// Initialize irebase
+
 
 export const auth = app.auth();
 export const firestore = firebase.firestore();
+
 export default app;
